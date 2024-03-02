@@ -70,41 +70,43 @@ def delete_contact():
         file.writelines(lines)
 
 
-# def change_contact():
-#     print_contacts()
-#     numb = int(input('Выберите порядковый номер контакта, который хотите изменить:'))
-#     with open('phonebook.txt', 'r', encoding ='utf-8') as file:
-#         contacts_list = file.readlines()
-#     print(
-#             'Что хотите изменить?:\n'
-#             '1. Фамилию\n'
-#             '2. Имя\n'
-#             '3. Отчество\n'
-#             '4. Телефону\n'
-#             '5. Адресс(город)'
-#             )
-#     var = input('выберите вариант для изменения: ')
-#     while var not in ('1','2','3','4','5'):
-#         print("некорректный ввод")
-#         var = input('выберите вариант для изменения: ')
-#     i_var = int(var) - 1
-#     text = input('Введите данные для замены: ')
-#     contact = contacts_list[numb - 1].split()
-#     contacts_list = contact.replace(contact[i_var], text)
-    
-#     with open('phonebook.txt', 'w', encoding ='utf-8') as file:
-#         file.writelines(contacts_list)
-
-
 def change_contact():
     print_contacts()
     numb = int(input('Выберите порядковый номер контакта, который хотите изменить:'))
     with open('phonebook.txt', 'r', encoding ='utf-8') as file:
-        lines = file.readlines()
-    lines[numb-1] = creat_contact()
-
+        contacts_list = file.readlines()
+    print(
+            'Что хотите изменить?:\n'
+            '1. Фамилию\n'
+            '2. Имя\n'
+            '3. Отчество\n'
+            '4. Телефону\n'
+            '5. Адресс(город)'
+            )
+    var = input('выберите вариант для изменения: ')
+    while var not in ('1','2','3','4','5'):
+        print("некорректный ввод")
+        var = input('выберите вариант для изменения: ') 
+    i_var = int(var) - 1
+    
+    contact = contacts_list[numb - 1].split()
+    contact[i_var] = input('Введите данные для замены: ')
+    contact_str = ' '.join(contact)
+    contacts_list[numb - 1] = contact_str + '\n'
+    
     with open('phonebook.txt', 'w', encoding ='utf-8') as file:
-        file.writelines(lines)
+        file.writelines(contacts_list)
+
+
+# def change_contact():
+#     print_contacts()
+#     numb = int(input('Выберите порядковый номер контакта, который хотите изменить:'))
+#     with open('phonebook.txt', 'r', encoding ='utf-8') as file:
+#         lines = file.readlines()
+#     lines[numb-1] = creat_contact()
+
+#     with open('phonebook.txt', 'w', encoding ='utf-8') as file:
+#         file.writelines(lines)
 
 
 def interface():
